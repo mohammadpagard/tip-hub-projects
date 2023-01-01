@@ -13,7 +13,7 @@ class Student(models.Model):
 class Lesson(models.Model):
     name = models.CharField(max_length=100)
     students = models.ManyToManyField(Student)
-    teacher = models.ForeignKey("Teacher", on_delete=models.CASCADE, related_name='lesson')
+    teacher = models.ForeignKey('Teacher', on_delete=models.CASCADE, related_name='lesson')
     description = models.TextField()
 
     def __str__(self):
@@ -23,9 +23,8 @@ class Lesson(models.Model):
 class Teacher(models.Model):
     name = models.CharField(max_length=100)
     age = models.CharField(max_length=2)
-    lessons = models.ManyToManyField(Lesson)
+    lessons = models.ManyToManyField(Lesson, related_name='teachers', blank=True)
     about = models.TextField(default="This is a teacher")
 
     def __str__(self):
         return self.name
-
