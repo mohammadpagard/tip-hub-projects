@@ -5,10 +5,11 @@ from django.db.models import Q
 from .models import Student, Lesson, Teacher 
 
 
+# values AND values_list
 class StudentList(View):
 	def get(self, request):
 		students = Student.objects.all().values_list("name", "age")
 		print(students)
 
 		context = {'students': students}
-		return render(request, 'university/index.html', context)
+		return render(request, 'university/values_valueslist.html', context)
