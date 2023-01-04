@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    {% for lesson in lessons %}
+        <p class="m-3">{{ lesson }}</p>
+    {% endfor %}
+
+{% endblock %}

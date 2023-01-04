@@ -13,3 +13,15 @@ class StudentList(View):
 
 		context = {'students': students}
 		return render(request, 'university/values_valueslist.html', context)
+
+
+# Q-functions
+class LessonList(View):
+	def get(self, request):
+		lessons = Lesson.objects.filter(
+			Q(teacher__name="Amir Amiri") &
+			Q(students__name="Danial")
+		)
+
+		context = {'lessons': lessons}
+		return render(request, 'university/q_function.html', context)
